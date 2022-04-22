@@ -237,11 +237,11 @@ public final class AssetTransfer implements ContractInterface {
         return response;
     }
 
-    /**
-     * Duplicates assets and assign the duplicate to the new owner
+   /**
+     * Duplicates asset and assign it to a new owner
      *
      * @param ctx        the transaction context
-     * @param id         original (old) asset ID
+     * @param id         original asset ID
      * @param owner_dup  owner of the new duplicated asset
      * @return new duplicated asset
      */
@@ -251,8 +251,7 @@ public final class AssetTransfer implements ContractInterface {
         //read the original asset using its id
         Asset asset = ReadAsset(ctx, id);
         //creating a new duplicate asset ID
-        String dup_asset_id = "duplicate-" + id;
-        
+        String dup_asset_id = id + "_duplicate";
         //create and retrun the duplicate asset
         Asset asset_dup = CreateAsset(ctx, dup_asset_id, asset.getColor(), asset.getSize(), owner_dup, asset.getAppraisedValue());
         return asset_dup;
